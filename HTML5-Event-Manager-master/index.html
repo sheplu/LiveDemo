@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 event manager</title>
+    <meta name="description" content="A simple HTML5 event manager widget for 3WEB Supinfo courses" />
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="container">
+    <header>
+        <h1>HTML5 event manager</h1>
+    </header>
+
+    <section>
+        <div id="event-manager">
+            <fieldset>
+                <legend>Create a new event</legend>
+
+                <form action="." method="get" id="event-form">
+                    <p><label>Name: <input type="text" name="name" required/></label></p>
+
+                    <p><label>Start date: <input type="date" name="startDate" required/></label></p>
+
+                    <p><label>End date: <input type="date" name="endDate" required/></label></p>
+
+                    <p><label>City: <input type="text" name="city" required/></label></p>
+
+                    <p><label>Postal code: <input type="text" name="postalCode" required/></label></p>
+
+                    <p><label>Box number: <input type="number" name="boxNumber" required/></label></p>
+
+                    <p><label>Street: <input type="text" name="street" required/></label></p>
+
+                    <p><input type="submit" value="Create"/></p>
+                </form>
+            </fieldset>
+        </div>
+
+        <div role="alertdialog" aria-labelledby="hd">
+            <fieldset>
+                <legend id="hd">Confirm event</legend>
+
+                <form action="." method="get" id="confirm">
+                    <h2>Event summary</h2>
+
+                    <div itemscope itemtype="http://schema.org/Event">
+                        <h3 itemprop="name">Event name</h3>
+                        <p>Start date: <time datetime="2016-04-21" itemprop="startDate" content="2016-04-21T20:00">2016-04-21</time></p>
+                        <p>End date : <time datetime="2016-04-22" itemprop="endDate" content="2016-04-22T20:00">2016-04-22</time></p>
+
+                        <div itemprop="location" itemscope itemtype="http://schema.org/Place">
+                            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                <span itemprop="addressLocality">Mountain View</span>,
+                                <span itemprop="postalCode">94043</span>
+                                <span itemprop="postOfficeBoxNumber">2</span>
+                                <span itemprop="streetAddress">1600 Amphitheatre Pkwy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        <input type="submit" value="Confirm" />
+                    </p>
+                </form>
+            </fieldset>
+        </div>
+
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
