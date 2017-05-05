@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas example</title>
+</head>
+<body>
+    <h1>Canvas Example</h1>
+    <canvas id="face" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+        var context = document.getElementById("face").getContext("2d");
+
+        context.beginPath();
+        context.lineWidth = 3;
+        context.fillStyle = "#ffff00";
+        context.arc(250, 250, 247, 0, 2 * Math.PI);
+        context.fill();
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(100,150);
+        context.lineTo(150,100);
+        context.strokeStyle = "black";
+        context.lineWidth = 3;
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(150,100);
+        context.lineTo(200,150);
+        context.strokeStyle = "green";
+        context.lineWidth = 3;
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(300,150);
+        context.lineTo(350,100);
+        context.strokeStyle = "red";
+        context.lineWidth = 3;
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(350,100);
+        context.lineTo(400,150);
+        context.strokeStyle = "black";
+        context.lineWidth = 3;
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(225, 350);
+        context.fillStyle = "#000000";
+        context.bezierCurveTo(225, 400, 275, 400, 275, 350);
+        context.moveTo(225, 350);
+        context.bezierCurveTo(225, 300, 275, 300, 275, 350);
+        context.fill();
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.fillStyle = "red";
+        context.font = "48px Arial";
+        context.fillText("Yoohoo !", 300, 300);
+        context.closePath();
+        context.stroke();
+    </script>
+</body>
+</html>
