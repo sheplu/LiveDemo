@@ -1,0 +1,103 @@
+@namespace url("http://www.ns.com/ns/Menu");
+@namespace food url("http://www.ns.com/ns/Food");
+
+@-webkit-keyframes food-animation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes food-animation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+@-o-keyframes food-animation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+@keyframes food-animation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+food|food {
+    display: block;
+    position: relative;
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    width: 200px;
+    height: 200px;
+}
+
+food|name {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+food|price {
+    position: absolute;
+    bottom: 13px;
+    right: 5px;
+    border-top: 3px solid darkgray;
+    border-bottom: 3px solid darkgray;
+    letter-spacing: 1px;
+
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+    -webkit-animation: food-animation 1s infinite;
+    -moz-animation:    food-animation 1s infinite;
+    -o-animation:      food-animation 1s infinite;
+    animation:         food-animation 1s infinite;
+
+    transition:width 2s, height 2s, transform 2s;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+}
+
+food|price:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+food|description {
+    display: block;
+    margin-bottom: 10px;
+    max-height: 100px;
+    overflow: auto;
+}
+
+food|calories {
+    display: block;
+    text-align: right;
+}
+
+food|calories:after {
+    content: " calories";
+}

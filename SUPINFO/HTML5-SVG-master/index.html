@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SVG example</title>
+    <style>
+        svg {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Example2</h1>
+    <figure>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="f1">
+                    <feGaussianBlur stdDeviation="5" />
+                </filter>
+            </defs>
+
+            <circle r="247" cy="250" cx="250" stroke-width="3" stroke="#000000" fill="#ffff00"/>
+
+            <ellipse ry="75" rx="30" cy="350" cx="250" stroke-width="3" stroke="#000000" fill="#000000"/>
+
+            <circle r="50" cy="300" cx="100" fill="#ffd4aa" filter="url(#f1)" />
+            <circle r="50" cy="300" cx="400" fill="#ffd4aa" filter="url(#f1)" />
+
+            <polyline points="100,150 150,100 200,150" style="fill:none;stroke:black;stroke-width:3" />
+            <polyline points="300,150 350,100 400,150" style="fill:none;stroke:black;stroke-width:3" />
+
+            <text x="300" y="300" fill="brown" style="font-size: 24px;" >
+                Yoohoo !
+            </text>
+
+            <line x1='10' y1='10' x2='100' y2='100' stroke='red' />
+        </svg>
+
+        <figcaption>SVG rocks</figcaption>
+    </figure>
+</body>
+</html>
