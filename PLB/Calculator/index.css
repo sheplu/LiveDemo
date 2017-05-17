@@ -1,0 +1,15 @@
+.calculator table,
+.calculator td {
+	border: 1px black solid;
+	border-collapse: collapse;
+}
+
+.calculator td {
+	padding: 20px;
+	background: red;
+
+}
+
+td:hover {
+	background: green;
+}
