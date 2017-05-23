@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Chat </title>
+	<style type="text/css">
+		p {
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<h1> Awesome chat </h1>
+
+	<div id="container">
+		<header> Socket.IO chat</header>
+		<section>
+			<form action="." method="GET" id="messageForm">
+				<p>
+					<label>Username</label>
+					<input type="text" name="username" />
+				</p>
+				<p>
+					<label>Message</label>
+					<input type="text" name="message" />
+				</p>
+				<p>
+					<input type="submit" />
+				</p>
+			</form>
+
+			<div id="messages"></div>
+		</section>
+	</div>
+
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+	<script type="text/javascript">
+		var list = document.getElementById('messages');
+		var messageForm = document.getElementById('messageForm');
+		var formUser = document.querySelector('[name=username]');
+		var formMessage = document.querySelector('[name=message]');
+		var socket = io.connect();
+
+		var addMessage = function(event) {
+			event.preventDefault();
+
+			if (formMessage.value !== '') {
+				var mess = {
+					'username': formUser.value,
+					'message' : formMessage.value
+				}
+
+				socket.emit('newMessage', mess);
+				getMessage(mess);
+				formMessage.value = '';
+			}
+
+		}
+
+		var getMessage = function(data) {
+			var listItem = document.createElement('p');
+			listItem.textContent = data.username + ' : ' + data.message;
+
+			list.prepend(listItem);
+		}
+
+		var getMessages = function(datas) {
+			for(var i = 0; i < datas.length; i++) {
+				getMessage(datas[i]);
+			}
+		}
+
+		messageForm.addEventListener('submit', addMessage);
+
+		socket.on('fetchMessages', getMessages);
+		socket.on('fetchNewMessage', getMessage);
+	</script>
+</body>
+</html>
