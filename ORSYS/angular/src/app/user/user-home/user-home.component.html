@@ -1,4 +1,11 @@
 <p>
   user-home works!
 </p>
-<router-outlet></router-outlet>
+
+<input [(ngModel)]="user.firstname" placeholder="pseudo" />
+<button (click)='addUser(user.firstname)'>Click Me</button>
+<div *ngIf='data.length > 0'>
+	<ul *ngFor='let item of data'>
+		<li>{{ item.id }} - {{ item.firstname }}</li>
+	</ul>
+</div>

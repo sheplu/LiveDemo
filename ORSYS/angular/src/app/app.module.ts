@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserShowComponent } from './user/user-show/user-show.component';
+import { UserDeleteComponent } from './user/user-delete/user-delete.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 const routes : Routes = [
 	{
@@ -15,12 +17,20 @@ const routes : Routes = [
 		children: [
 			{
 				path: 'display',
-				component: UserHomeComponent,
+				component: UserHomeComponent
 			},
 			{
 				path: 'show',
-				component: UserShowComponent,
+				component: UserShowComponent
 			},
+			{
+				path: 'edit',
+				component: UserEditComponent
+			},
+			{
+				path: 'delete',
+				component: UserDeleteComponent
+			}
 		]
 	},
 	{
@@ -36,7 +46,9 @@ const routes : Routes = [
     AppComponent,
     UserComponent,
     UserHomeComponent,
-    UserShowComponent
+    UserShowComponent,
+    UserDeleteComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
