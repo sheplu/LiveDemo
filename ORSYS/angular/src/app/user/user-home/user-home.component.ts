@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './../../classes/user'
+import { User } from './../../classes/user';
+import { UserGithubService } from './../../services/user-github.service';
 
 @Component({
   selector: 'app-user-home',
@@ -10,14 +11,33 @@ import { User } from './../../classes/user'
 
 
 export class UserHomeComponent implements OnInit {
+  // https://api.github.com/users/sheplu
+  // https://api.github.com/users/sheplu/followers
+  // https://api.github.com/users/sheplu/repos
+  selectedUser: any;
+  followers: any;
 
-  constructor() { }
+  constructor(private userGithubService : UserGithubService) { }
 
   ngOnInit() {
+    this.getDetails('bob');
   }
 
   data : User[] = [];
   user : User = new User();
+
+  getDetails(value) {
+      this.userGithubService.getUserDetails(value).subscribe(
+        data => {
+          this.selectedUser = data;
+        }
+      );
+      this.userGithubService.getFollowList(value).subscribe(
+        data => {
+          this.followers = data;
+        }
+      );
+    }
 
   addUser = function(value) {
   	console.log(value);
@@ -27,7 +47,5 @@ export class UserHomeComponent implements OnInit {
   		this.data.push(this.user);
       this.user = new User();
   	}
-  	
   };
-
 }

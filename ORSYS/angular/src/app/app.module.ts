@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -9,6 +10,8 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserShowComponent } from './user/user-show/user-show.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+
+import { UserGithubService } from './services/user-github.service'
 
 const routes : Routes = [
 	{
@@ -20,7 +23,7 @@ const routes : Routes = [
 				component: UserHomeComponent
 			},
 			{
-				path: 'show',
+				path: 'show/:id',
 				component: UserShowComponent
 			},
 			{
@@ -53,9 +56,10 @@ const routes : Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ UserGithubService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
