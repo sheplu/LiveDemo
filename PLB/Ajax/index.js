@@ -1,7 +1,7 @@
 var input = document.querySelector('#submit');
 var data = document.querySelector('#data');
 input.addEventListener('click', function() {
-	getDatasJQ();
+	getDatas();
 });
 
 function getDatasJQ() {
@@ -23,7 +23,8 @@ function getDatasJQ() {
 function test() {
 	$.ajax({
 		method: "GET",
-		url: "http://api.github.com/users/sheplu"
+		url: "http://api.github.com/users/sheplu",
+		data: ''
 	})
 	.done(function( msg ) {
 		console.log(msg );

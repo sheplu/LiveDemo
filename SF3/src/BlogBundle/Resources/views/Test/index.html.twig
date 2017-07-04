@@ -1,0 +1,18 @@
+{% extends "BlogBundle::admin.html.twig" %}
+
+{% block title %}BlogBundle:Test:index{% endblock %}
+
+{% block body %}
+{{parent()}}
+<h1>Welcome to the Test:index page</h1>
+{% if array|length <= 1 %}
+	No data
+{% else %}
+	{% for item in array %}
+		{{item.name|lower}}
+	{% endfor%}
+{% endif %}
+{{ date|date('h:m:s')}}
+{{dump(date)}}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "BlogBundle::admin.html.twig" %}
+
+{% block title %}BlogBundle:Test:index{% endblock %}
+
+{% block body %}
+{{parent()}}
+{{dump(user)}}
+
+{% endblock %}
