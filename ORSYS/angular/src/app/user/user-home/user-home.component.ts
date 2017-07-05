@@ -16,15 +16,15 @@ export class UserHomeComponent implements OnInit {
   // https://api.github.com/users/sheplu/repos
   selectedUser: any;
   followers: any;
-
-  constructor(private userGithubService : UserGithubService) { }
+  data: User[] = [];
+  user: User = new User();
+  constructor(private userGithubService: UserGithubService) { }
 
   ngOnInit() {
     this.getDetails('bob');
   }
 
-  data : User[] = [];
-  user : User = new User();
+
 
   getDetails(value) {
       this.userGithubService.getUserDetails(value).subscribe(
@@ -40,12 +40,12 @@ export class UserHomeComponent implements OnInit {
     }
 
   addUser = function(value) {
-  	console.log(value);
-  	if(value.length > 0) {
-  		console.log(this.user);
-  		this.user.id = this.data.length;
-  		this.data.push(this.user);
+    console.log(value);
+    if (value.length > 0) {
+      console.log(this.user);
+      this.user.id = this.data.length;
+      this.data.push(this.user);
       this.user = new User();
-  	}
+    }
   };
 }

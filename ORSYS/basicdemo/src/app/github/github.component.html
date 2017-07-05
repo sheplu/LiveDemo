@@ -1,0 +1,23 @@
+<p myhidden>
+  github works!
+</p>
+<input type="text" [(ngModel)]="pseudo" placeholder="pseudo" />
+<button (click)='getUserInfo(pseudo)'>Search user</button>
+<button (click)='getUserInfoWithPromise(pseudo)'>Search user P</button>
+<p *ngIf='pseudo && ( !selectedUser || selectedUser !== pseudo )'> Are you looking for {{ pseudo }} ?</p>
+<div *ngIf='choice == "observable"'>
+	<p *ngIf='selectedUser'> You are looking for {{ selectedUser.login | custom }} ( {{selectedUser.id }} )</p>
+	<div *ngIf='followers.length > 0'>
+		<ul *ngFor='let follower of followers'>
+			<li>{{ follower.id }} - <a [routerLink]="['show', follower.id]">{{ follower.login }}</a></li>
+		</ul>
+	</div>
+</div>
+<div *ngIf='choice == "promise"'>
+	<p *ngIf='userGithubService'> You are looking for {{ userGithubService.result.login }} ( {{ userGithubService.result.id }} )</p>
+	<div>
+		<ul *ngFor='let follower of userGithubService.results '>
+			<li>{{ follower.id }} -P <a [routerLink]="['show', follower.id]">{{ follower.login }}</a></li>
+		</ul>
+	</div>
+</div>
