@@ -1,6 +1,12 @@
 let init = document.querySelector('#init');
+
+var test = setTimeout(function() {
+    alert('hello');
+}, 1000);
+
 init.addEventListener('click', function () {
     calculator.init();
+    clearInterval(test);
 });
 
 let calculator = {
@@ -103,10 +109,5 @@ let calculator = {
         alert(result);
         result = 0;
     }
-
-
-
-
-
-
 };
+
