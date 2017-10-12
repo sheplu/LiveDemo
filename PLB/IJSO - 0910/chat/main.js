@@ -3,7 +3,7 @@ let inputMessage = document.querySelector('#message');
 let sendMessage = document.querySelector('button');
 let div = document.querySelector('#ajax');
 
-setInterval(getMessages, 5000);
+setInterval(getMessagesJQ, 5000);
 
 function showMessages(data) {
     div.textContent = '';
@@ -17,6 +17,28 @@ function addMessage(message) {
     e.innerHTML = message.pseudo + ' | ' + message.message;
     div.appendChild(e);
 }
+
+function getMessagesJQ() {
+    $.ajax({
+        "url" : "https://plbchat.herokuapp.com/messages",
+        "type" : "GET",
+        "success" : function(messages) {
+            console.log(messages);
+            showMessages(messages);
+        }
+    });
+}
+
+$('#messJQ').click(function() {
+    $.ajax({
+        "url" : "https://plbchat.herokuapp.com/messages",
+        "type" : "POST",
+        "data" : "pseudo="+$('#pseudo').val()+'&message='+$('#message').val(),
+        "success" : function(messages) {
+            console.log(messages);
+        }
+    })
+});
 
 function getMessages() {
     let xhr = getXML();
@@ -38,6 +60,8 @@ sendMessage.addEventListener('click', function(e) {
 
     getMessages();
 });
+
+sendMessage.addEventListener('click', (e) => console.log('test'));
 
 function getXML() {
     if (window.XMLHttpRequest) {
