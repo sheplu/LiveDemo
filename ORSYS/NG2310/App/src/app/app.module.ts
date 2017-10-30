@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes,  } from "@angular/router";
 import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
 
 import { GithubService } from "./github.service";
 
@@ -37,7 +38,8 @@ const appRoutes : Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule, 
+    FormsModule
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]

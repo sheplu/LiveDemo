@@ -18,4 +18,11 @@ export class GithubService {
     )
   }
 
+  getUserGithubFollowers() : any {
+    return this.http.get('https://api.github.com/users/sheplu/followers')
+    .map( (res) => 
+      res.json()
+    )
+  }
+
 }

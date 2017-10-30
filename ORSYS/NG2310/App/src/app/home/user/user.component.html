@@ -1,4 +1,10 @@
 User.component
 <p>
-  user works! {{ id }} {{ test }}
+  user works! {{pseudo}} {{ coucou }}
+  <input type='text' [(ngModel)]='pseudo' (change)='clickclick()' />
+  <button > Click {{ pseudo }}</button>
+  <span *ngIf="user?.login"> {{ user.login | uppercase }} </span>
 </p>
+<ul>
+  <li *ngFor='let day of days' (click) = 'clickclick()'> {{ day }}</li>
+</ul>

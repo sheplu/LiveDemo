@@ -3,6 +3,9 @@ import { ActivatedRoute } from "@angular/router";
 
 import { GithubService } from "../../github.service";
 
+import 'rxjs/add/operator/mergeMap';
+
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -12,7 +15,11 @@ export class UserComponent implements OnInit {
 
   id: string;
   test: string;
-  pseudo : string;
+  user : any;
+  followers : any;
+  pseudo: string;
+  
+  days: String[] =['lundi', 'mardi','mercredi'];
 
   constructor(private route : ActivatedRoute,
               private github : GithubService) { }
@@ -25,11 +32,38 @@ export class UserComponent implements OnInit {
       console.log(this.id);
       console.log(this.test);
     });
-
-    this.github.getUserGithub().subscribe( (data) => {
-      this.pseudo = data.login;
+ 
+    /*
+    this.github.getUserGithub().flatMap(() => {
+      return this.github.getUserGithubFollowers();
+    }).subscribe((data) => {
       console.log(data);
+    })*/
+
+    this.github.getUserGithub().subscribe((data) => {
+      console.log(data);
+      this.github.getUserGithubFollowers().subscribe((value) => {
+        console.log(value);
+      })
     })
+  
+    /*
+    this.github.getUserGithub().subscribe( (data) => {
+      this.user = data;
+    });
+    this.github.getUserGithubFollowers().subscribe( (data) =>{
+      this.followers = data
+    })
+    */
   }
+
+  clickclick(): void {
+    console.log('click');
+  }
+
+
+
+
+
 
 }
