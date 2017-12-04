@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title | concat:'SAS' }}!
+  </h1>
+  <nav>
+    <a routerLink='index' routerLinkActive='active' appCustom [color]="'green'" [test]="'toto'">Index</a>
+    <a routerLink='contact' routerLinkActive='active'>Contact</a>
+  </nav>
+</div>
+<div>
+  <p appCustom>Hello</p>
+  <input type="text" [(ngModel)]='user.pseudo' />
+  <button (click)='searchUser()'> Search </button>
+  <router-outlet></router-outlet>
+  {{ user | json }}
+</div>
+
+<div *ngIf='users?.length > 0'>
+  <p *ngFor='let member of users | sortfilter:"namesss"'>
+    {{ member.name }}
+  </p>
+</div>

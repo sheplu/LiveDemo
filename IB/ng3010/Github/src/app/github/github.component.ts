@@ -11,6 +11,8 @@ export class GithubComponent implements OnInit {
   githubUser: any;
   followers: any[];
   pseudo: string;
+  type: string;
+  sortValue: string = 'name';
 
   constructor(private github: GithubService) { }
 
@@ -20,6 +22,7 @@ export class GithubComponent implements OnInit {
   searchUser(): void {
     this.github.getUser(this.pseudo).subscribe(
       (data) => {
+        this.type = 'Observable';
         this.githubUser = data;
         console.log(this.githubUser);
       }
@@ -30,5 +33,18 @@ export class GithubComponent implements OnInit {
       }
     );
   };
+
+  searchUserP(): void {
+    this.github.getUserP(this.pseudo)
+      .then( (data)  => {
+        this.type = 'Promise';
+        this.githubUser = data;
+      });
+  }
+
+  changeSort(value) {
+    this.sortValue = value;
+    console.log(this.sortValue);
+  }
 
 }

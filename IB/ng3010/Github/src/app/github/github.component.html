@@ -4,11 +4,20 @@
 <h2>Here are some links to help you start: </h2>
 <input [(ngModel)]='pseudo'/>
 <button (click)='searchUser()'> Add </button>
+<button (click)='searchUserP()'> Add Promise </button>
+<button (click)='changeSort("name")'> Name </button>
+<button (click)='changeSort("id")'> Id </button>
+
 <div *ngIf='githubUser'>
-  <h2> List of followers of {{ githubUser.login }}</h2>
-  <ul>
-    <li *ngFor='let follower of followers'>
-      {{ follower.login }} - {{ follower.id }}
+  <h2> {{ type }} List of followers of {{ githubUser.login }}</h2>
+  <ul *ngIf='followers'>
+    <li *ngFor='let follower of followers | concat : sortValue'>
+      <a routerLink='user/{{follower.login}}' > {{ follower.login }} </a> - {{ follower.id }}
     </li>
   </ul>    
 </div>
+
+<!--
+<app-user-github [id]='sheplu'></app-user-github>
+
+-->
