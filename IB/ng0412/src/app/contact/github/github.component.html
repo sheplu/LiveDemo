@@ -1,0 +1,23 @@
+<form (ngSubmit)='doSubmit()'>
+  <input type='text' [(ngModel)]='formUser.pseudo' name='pseudo'/>
+  <button type='submit'> Submit</button>
+</form>
+<app-not-found></app-not-found>
+
+<p>
+  github works! {{ id }} 
+  <input type="text" [(ngModel)]='pseudo' #ctrl='ngModel' pattern='[a-z]*' required /> 
+  {{ pseudo }} | {{ ctrl.valid }}
+  <button (click)='doClick()'>CLICK</button>
+  <br />
+  <span *ngIf='user3'>{{ user3.login | uppercase}}</span>
+  <span *ngIf='user3'>{{ user3.id }}</span>
+</p>
+<ul *ngIf='followers'>
+  <button (click)='doSort()'> Filter </button>
+  <li *ngFor='let follower of followers | concat:filter'>
+    <a routerLink='/contact/github/{{follower.login}}'>
+      <span [appAwesome]= "color">{{ follower.login }}</span>
+    </a>
+  </li>
+</ul>
