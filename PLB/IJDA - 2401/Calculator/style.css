@@ -1,0 +1,13 @@
+table, td {
+	border: 1px black solid;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 20px;
+	background: red;
+}
+
+td:hover {
+	background: green;
+}
