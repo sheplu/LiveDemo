@@ -9,25 +9,32 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  private id: String;
-  constructor(private route: ActivatedRoute,
-    private user: UserService) { 
+  id: String;
+  input: String;
 
+  constructor(private route: ActivatedRoute,
+  private user: UserService) { 
   }
 
   ngOnInit() {
     this.route.params.subscribe( (params)  => {
       this.user.getUserGithub(params.id).subscribe( (data) => {
         console.log(data);
-        this.id = data.id;
-      })
+        this.id = 'Jean';
+      });
     }); 
-
     console.log(this.user.getUser());
   }
 
-  private clicked() {
+  clicked() {
     console.log('clicked!');
+    this.fetchData();
   }
 
+  private fetchData() {
+    this.user.getUserGithub(this.input).subscribe( (data) => {
+      console.log(data);
+      this.id = 'jean';
+    });
+  }
 }
